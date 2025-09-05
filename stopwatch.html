@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch Web Application</title>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .stopwatch-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            width: 90%;
+        }
+        .title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .time-display {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        .buttons {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 5px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button i {
+            font-size: 1.2rem;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .pause {
+            background: #FF9800;
+        }
+        .pause:hover {
+            background: #F57C00;
+        }
+        .lap-list {
+            max-height: 200px;
+            overflow-y: auto;
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            scrollbar-width: none; 
+            -ms-overflow-style: none;  
+}
+.lap-list::-webkit-scrollbar {
+    display: none
+        }
+        .lap-item {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 5px 0;
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .lap-item span:last-child {
+            flex: 0 0 auto;
+        }
+        .clear-laps {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .clear-laps:hover {
+            background: #d32f2f;
+        }
+        .cross {
+            cursor: pointer;
+            color: #ffcccc;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+        .cross:hover {
+            color: #ff0000;
+        }
+        @media (max-width: 600px) {
+            .time-display {
+                font-size: 3rem;
+            }
+            button {
+                padding: 12px 18px;
+            }
+            button i {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch-container">
+        <div class="title">Stopwatch</div>
+        <div class="time-display" id="time-display">00:00:00.000</div>
+        <div class="buttons">
+            <button id="start-stop"><i class="fas fa-play"></i></button>
+            <button id="pause" class="pause" disabled><i class="fas fa-pause"></i></button>
+            <button id="reset" disabled><i class="fas fa-redo"></i></button>
+            <button id="lap" disabled><i class="fas fa-stopwatch"></i></button>
+        </div>
+        <div class="lap-list" id="lap-list"></div>
+        <button id="clear-laps" class="clear-laps" style="display: none;">Clear All Laps</button>
+    </div>
+
+  <script src="stopwatch.js"></script>
+</body>
+</html>
